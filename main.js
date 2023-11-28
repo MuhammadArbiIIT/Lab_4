@@ -17,3 +17,11 @@ function showPosition (position) {
     `Latitude: ${latitude}<br>Longitude: ${longitude}<br>Accuracy: ${accuracy} meters`;
 
 }
+
+function showError (error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+        document.getElementById('locationResult').innerHTML = "User denied the request for Geolocation.";
+        break;
+    }
+}
