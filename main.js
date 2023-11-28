@@ -24,8 +24,16 @@ function fetchCityData(cities) {
             };
         });
     });
-
 }
+//resolve all promises
+Promise.all(promises)
+    .then(cityData => {
+        //display the sunrise and sunset information
+        diplayCityData(cityData);
+    })
+    .catch(error => {
+        consolse.error('Error fetching the data', error);
+    });
 
 //used for button clicked and show error
 function getLocation() {
