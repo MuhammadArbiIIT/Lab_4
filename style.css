@@ -1,0 +1,16 @@
+body {
+    margin: 0; 
+    height: 100vh;
+    display: flex; 
+    align-items: center;
+    justify-content: center;    
+}
+
+.box  {
+    background-color: black;
+    height: 600px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
