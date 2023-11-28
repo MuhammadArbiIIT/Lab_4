@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Function to fetch city data
     async function fetchCityData(selectedCity) {
-      const apiUrl = 'https://api.sunrisesunset.io/json';
+      const apiUrl = 'https://api.sunrisesunset.io/json?';
       const { latitude, longitude } = cityCoordinates[selectedCity];
   
       const cityUrl = `${apiUrl}lat=${latitude}&lng=${longitude}`;
