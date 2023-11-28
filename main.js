@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Coordinates for each city
     const cityCoordinates = {
-      'New York': { latitude: 40.7128, longitude: -74.0060 },
+      'New York': { latitude: 40.71427, longitude: -74.00597 },
       'Chicago': { latitude: 41.85003, longitude: -87.65005},
       'Los Angeles': { latitude: 34.0522, longitude: -118.2437 },
       'Boston': { latitude: 42.3601, longitude: -71.0589 },
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
     // Function to fetch city data
     async function fetchCityData(selectedCity) {
-      const apiUrl = 'https://api.sunrise-sunset.org/json?';
+      const apiUrl = 'https://api.sunrisesunset.io/json';
       const { latitude, longitude } = cityCoordinates[selectedCity];
   
       const cityUrl = `${apiUrl}lat=${latitude}&lng=${longitude}`;
