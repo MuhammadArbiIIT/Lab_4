@@ -41,6 +41,18 @@ function displayCityData(cityData) {
     //clear previous data
     locationResult.innerHTML= '';
 
+    //diplay sunrise and sunset information for each city
+    cityData.forEach(data => {
+        const {city, sunrise, sunset } = data;
+        const info = document.createElement('p');
+        info.innerHTML = `<strong>${city}:</strong> Sunrise at ${sunrise}, Sunset at ${sunset}`;
+        locationResult.appendChild(info);
+        //add each city to the dropdown menu
+        const option = document.createElement('option');
+        option.value=city;
+        option.textContent = city;
+        cityDropdown.appendChild(option);
+    });
 }
 
 //used for button clicked and show error
