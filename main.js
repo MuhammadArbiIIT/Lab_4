@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', getLocationOnLoad);
 document.getElementById('getLocationButton').addEventListener('click', getLocation);
 
 function getLocation() {
