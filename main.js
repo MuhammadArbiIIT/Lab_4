@@ -34,6 +34,14 @@ Promise.all(promises)
     .catch(error => {
         consolse.error('Error fetching the data', error);
     });
+//function display city data
+function displayCityData(cityData) {
+    const cityDropdown = document.getElementById('cityDropdown');
+    const locationResult = document.getElementById('locationResult');
+    //clear previous data
+    locationResult.innerHTML= '';
+
+}
 
 //used for button clicked and show error
 function getLocation() {
