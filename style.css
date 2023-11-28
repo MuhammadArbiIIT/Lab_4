@@ -20,13 +20,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px; /* Add some border-radius for rounded corners */
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3); /* Add box-shadow for the 3D effect */
-    
+    border-radius: 10px; 
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3); 
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
-button .getLocationButton {
-    margin-top: 20px;
+#getLocationButton {
+    margin-bottom:  20px;
     justify-content: center;
     align-items: center;
 }
+
