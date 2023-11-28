@@ -4,17 +4,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let cityData = [];
 
     // Add event listener for city selection
-   cityDropdown.addEventListener('change', function() {
-    const selectedCity = cityDropdown.value;
-    displaySelectedCity(selectedCity);
-});
-
-    // Add event listener for city selection
     cityDropdown.addEventListener('change', function() {
         const selectedCity = cityDropdown.value;
-        if (selectedCity) {
-            displaySelectedCity(selectedCity);
-        }
+        displaySelectedCity(selectedCity);
     });
 
     // Add event listener for button click
@@ -27,42 +19,40 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchCityData(cities);
     populateDropdown(cities);
 
-// Function to fetch city data
-function fetchCityData(cities) {
-    const apiUrl = 'https://api.sunrisesunset.io/json?';
-  
-    // Create an array of promises for each city
-    const promises = cities.map(city => {
-        const cityUrl = `${apiUrl}&q=${encodeURIComponent(city)}`;
-        return fetch(cityUrl)
-            .then(response => response.json())
-            .then(data => ({
-                city,
-                sunrise: data.results.sunrise,
-                sunset: data.results.sunset
-            }))
-            .catch(error => {
-                console.error(`Error fetching data for ${city}:`, error);
-                return {
-                  city,
-                  sunrise: 'N/A',
-                  sunset: 'N/A'
-                };
-            });
-    });
-  
-    // Resolve all promises
-    Promise.all(promises)
-        .then(newCityData => {
-            // Update the cityData array
-            cityData = newCityData;
-        })
-        .catch(error => {
-            console.error('Error fetching city data:', error);
+    // Function to fetch city data
+    function fetchCityData(cities) {
+        const apiUrl = 'https://api.sunrise-sunset.org/json?';
+        
+        // Create an array of promises for each city
+        const promises = cities.map(city => {
+            const cityUrl = `${apiUrl}&q=${encodeURIComponent(city)}`;
+            return fetch(cityUrl)
+                .then(response => response.json())
+                .then(data => ({
+                    city,
+                    sunrise: data.results.sunrise,
+                    sunset: data.results.sunset
+                }))
+                .catch(error => {
+                    console.error(`Error fetching data for ${city}:`, error);
+                    return {
+                        city,
+                        sunrise: 'N/A',
+                        sunset: 'N/A'
+                    };
+                });
         });
-  }
-  
 
+        // Resolve all promises
+        Promise.all(promises)
+            .then(newCityData => {
+                // Update the cityData array
+                cityData = newCityData;
+            })
+            .catch(error => {
+                console.error('Error fetching city data:', error);
+            });
+    }
 
     // Function to populate dropdown menu
     function populateDropdown(cities) {
