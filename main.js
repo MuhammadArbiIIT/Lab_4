@@ -7,3 +7,13 @@ function getLocation() {
         document.getElementById('locationResult').innerHTML = "Geolocation is not supported by this browser.";
     }
 }
+
+function showPosition (position) {
+    const latitude = position.coords.lattitude;
+    const longitude = positon.coords.longitude;
+    const accuracy = positon.coords.accuracy;
+
+    document.getElementById('locationResult').innerHTML = 
+    `Latitude: ${latitude}<br>Longitude: ${longitude}<br>Accuracy: ${accuracy} meters`;
+
+}
