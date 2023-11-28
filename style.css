@@ -25,3 +25,8 @@ body {
     
 }
 
+button .getLocationButton {
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
