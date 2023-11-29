@@ -20,11 +20,10 @@ body {
     width: 500px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* Center the content horizontally */
     justify-content: space-between;
     border-radius: 10px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-    align-items: center;
 }
 
 #title {
@@ -43,7 +42,7 @@ body {
 
 #locationResult {
     font-size: 15px;
-    margin-bottom: 500px;
+    margin-bottom: 0px;
 }
 
 #getLocationButtonContainer {
@@ -62,4 +61,28 @@ body {
     position: fixed; 
 }
 
-/* style of dynamic data*/
+/* Style for individual images */
+#img-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 2 columns */
+    gap: 5px; /* Adjust the gap between images */
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    position: absolute;
+    max-width: 400px;
+    scale: 20%;
+    top: 100px;
+ }
+ 
+
+.image {
+    height: auto;
+    width: 100px;
+    max-width: 100px;
+}
+
+/* Additional styling for specific images */
+#timezone_img {
+    scale: 55%;
+}
