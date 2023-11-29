@@ -45,7 +45,7 @@ body {
 }
 
 #locationResult {
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 400px;
 }
 
@@ -56,7 +56,9 @@ body {
     margin-left: 310px;
 }
 
+
 #getLocationButton {
+    cursor:pointer;
     font-size: 25px;
     background: transparent;
     border: none;
@@ -207,10 +209,29 @@ body {
     bottom: 120px;
 }
 
-/* hiding images when btn pressed */
-.button-pressed #img-container,
-.button-pressed #img-container2 {
-    visibility: hidden;
-    opacity: 0;
+/* Style for individual images */
+#img-container,
+#img-container2 {
+    display: grid;
+    opacity: 1;
     transition: opacity 0.5s ease; /* Optional: Add a smooth transition effect */
+}
+
+/* Style for individual images */
+#img-container,
+#img-container2 {
+    display: grid;
+    opacity: 1;
+    transition: opacity 0.5s ease; /* Optional: Add a smooth transition effect */
+}
+
+/* Hide images when the container has the 'hide-images' class */
+.hide-images {
+    display: none;
+}
+
+.image {
+    /* Add styles for your images here */
+    max-width: 100%;
+    height: auto;
 }

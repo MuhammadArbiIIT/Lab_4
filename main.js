@@ -1,9 +1,11 @@
+/*Powered by SunriseSunset.io*/
 document.addEventListener('DOMContentLoaded', function () {
     const cityDropdown = document.getElementById('cityDropdown');
     const locationResult = document.getElementById('locationResult');
+    const getLocationButton = document.getElementById('getLocationButton');
+    const resultDataButton = document.getElementById('resultDataButton');
     let cityData = [];
 
-    // Coordinates for each city
     const cityCoordinates = {
         'New York': { latitude: 40.71427, longitude: -74.00597 },
         'Chicago': { latitude: 41.85003, longitude: -87.65005 },
@@ -12,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
         'Toronto': { latitude: 43.6532, longitude: -79.3832 }
     };
 
-    // Function to create a data element with a specific class
     function createDataElement(label, value, className, parent) {
         const element = document.createElement('p');
         element.innerHTML = `<strong>${label}:</strong> ${value}`;
@@ -20,20 +21,17 @@ document.addEventListener('DOMContentLoaded', function () {
         parent.appendChild(element);
     }
 
-    // Add event listener for city selection
     cityDropdown.addEventListener('change', function () {
-        const selectedCity = cityDropdown.value;
-        fetchCityData(selectedCity);
+        fetchCityData(cityDropdown.value);
     });
 
-    // Add event listener for button click
-    document.getElementById('getLocationButton').addEventListener('click', getLocation);
+    getLocationButton.addEventListener('click', getLocation);
 
-    // Fetch initial city data
-    fetchCityData('New York');
+    fetchCityData('New York')
+        .then(() => showImages())
+        .catch(error => console.error('Error fetching New York data:', error));
     populateDropdown(Object.keys(cityCoordinates));
 
-    // Function to fetch city data
     async function fetchCityData(selectedCity) {
         const apiUrl = 'https://api.sunrisesunset.io/json?';
         const { latitude, longitude } = cityCoordinates[selectedCity];
@@ -69,21 +67,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }];
             displaySelectedCity(selectedCity);
         }
-        // Call fetchNextDayData here to fetch data for the next day
         await fetchNextDayData(selectedCity);
     }
 
-    // Function to fetch city data for the next day
     async function fetchNextDayData(selectedCity) {
         const apiUrl = 'https://api.sunrisesunset.io/json?';
         const { latitude, longitude } = cityCoordinates[selectedCity];
-
-        // Get the date for the next day
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
-        const nextDay = tomorrow.toISOString().split('T')[0]; // Format: YYYY-MM-DD
-
-        // Build the API URL for the next day
+        const nextDay = tomorrow.toISOString().split('T')[0];
         const nextDayUrl = `${apiUrl}lat=${latitude}&lng=${longitude}&date=${nextDay}`;
 
         try {
@@ -100,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 timezone: data.results.timezone
             };
 
-            // Append the next day data to the cityData array
             cityData.push(nextDayDataItem);
             displaySelectedCity(selectedCity);
         } catch (error) {
@@ -108,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Function to populate dropdown menu
     function populateDropdown(cities) {
         cities.forEach(city => {
             const option = document.createElement('option');
@@ -125,23 +115,20 @@ document.addEventListener('DOMContentLoaded', function () {
             const { sunrise, sunset, dawn, dusk, solar_noon, day_length, timezone } = selectedCityData;
             const info = document.createElement('div');
 
-            // Create elements for different data points and add classes
             createDataElement('Sunrise (Today)', sunrise, 'sunrise', info);
             createDataElement('Sunset (Today)', sunset, 'sunset', info);
             createDataElement('Dawn (Today)', dawn, 'dawn', info);
             createDataElement('Dusk (Today)', dusk, 'dusk', info);
             createDataElement('Solar Noon (Today)', solar_noon, 'solar-noon', info);
             createDataElement('Day Length (Today)', day_length, 'day-length', info);
-            createDataElement('Timezone ', timezone, 'timezone', info);
+            createDataElement('Timezone (Today)', timezone, 'timezone', info);
 
-            // Check if there is data for the next day
             if (cityData.length > 1) {
                 const nextDayData = cityData[1];
 
                 if (nextDayData) {
                     const { sunrise: nextSunrise, sunset: nextSunset, dawn: nextDawn, dusk: nextDusk, solar_noon: nextSolarNoon, day_length: nextDayLength } = nextDayData;
 
-                    // Create elements for next day data
                     createDataElement('Sunrise (Next Day)', nextSunrise, 'sunrise2', info);
                     createDataElement('Sunset (Next Day)', nextSunset, 'sunset2', info);
                     createDataElement('Dawn (Next Day)', nextDawn, 'dawn2', info);
@@ -149,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     createDataElement('Solar Noon (Next Day)', nextSolarNoon, 'solar-noon2', info);
                     createDataElement('Day Length (Next Day)', nextDayLength, 'day-length2', info);
                 } else {
-                    // Handle the case where there is no data for the next day
                     createDataElement('Next Day Data', 'N/A', 'no-data', info);
                 }
             }
@@ -159,43 +145,57 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Function for button click and show error
+    let isButtonClicked = false; // Flag to check if the button is clicked
+    let isLocationFetched = false; // Flag to check if the location has been fetched
+    
     function getLocation() {
         console.log("Button clicked");
-    
-        // Toggle the class to hide images
-        document.getElementById('img-container').classList.toggle('hide-images');
-        document.getElementById('img-container2').classList.toggle('hide-images');
-    
-        // Add a class to the body or a parent element
         document.body.classList.toggle('button-pressed');
     
-        if (navigator.geolocation) {
+        if (navigator.geolocation && !isLocationFetched) {
             navigator.geolocation.getCurrentPosition(showPosition, showError);
+            isLocationFetched = true;
         } else {
-            document.getElementById('locationResult').innerHTML = "Geolocation is not supported by this browser.";
+            locationResult.innerHTML = "Geolocation is not supported by this browser.";
         }
+    
+        setTimeout(() => {
+            if (isButtonClicked) {
+                fetchCityData('New York');
+                showImages();
+                isButtonClicked = false;
+                getLocation();
+            }
+        }, 3000);
+    
+        isButtonClicked = true;
     }
     
-
-    // Function to get coordinates and information from API
+    function showImages() {
+        console.log('showImages function called');
+    
+        const imgContainer = document.getElementById('img-container');
+        const imgContainer2 = document.getElementById('img-container2');
+    
+        imgContainer.classList.remove('hide-images');
+        imgContainer2.classList.remove('hide-images');
+    }
+    
     function showPosition(position) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
         const accuracy = position.coords.accuracy;
-
-        document.getElementById('locationResult').innerHTML =
-            `Latitude: ${latitude}<br>Longitude: ${longitude}<br>Accuracy: ${accuracy} meters`;
+    
+        locationResult.innerHTML = `Latitude: ${latitude}<br>Longitude: ${longitude}<br>Accuracy: ${accuracy} meters`;
     }
-
-    // Function for error handling
+    
     function showError(error) {
         switch (error.code) {
             case error.PERMISSION_DENIED:
-                document.getElementById('locationResult').innerHTML = "User denied the request for Geolocation.";
+                locationResult.innerHTML = "User denied the request for Geolocation.";
                 break;
             default:
-                document.getElementById('locationResult').innerHTML = "An unspecified error occurred.";
+                locationResult.innerHTML = "An unspecified error occurred.";
                 break;
         }
     }
