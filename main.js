@@ -113,30 +113,37 @@ document.addEventListener('DOMContentLoaded', function () {
     function displaySelectedCity(selectedCity) {
         const selectedCityData = cityData.find(city => city.city === selectedCity);
         if (selectedCityData) {
-          const { sunrise, sunset, dawn, dusk, solar_noon, day_length, timezone } = selectedCityData;
-          const info = document.createElement('div');
-      
-          // Create elements for different data points and add classes
-          createDataElement('Sunrise', sunrise, 'sunrise', info);
-          createDataElement('Sunset', sunset, 'sunset', info);
-          createDataElement('Dawn', dawn, 'dawn', info);
-          createDataElement('Dusk', dusk, 'dusk', info);
-          createDataElement('Solar Noon', solar_noon, 'solar-noon', info);
-          createDataElement('Day Length', day_length, 'day-length', info);
-          createDataElement('Timezone', timezone, 'timezone', info);
-      
-          locationResult.innerHTML = '';
-          locationResult.appendChild(info);
+            const { sunrise, sunset, dawn, dusk, solar_noon, day_length, timezone } = selectedCityData;
+            const info = document.createElement('div');
+    
+            // Create elements for different data points and add classes
+            createDataElement('Sunrise (Today)', sunrise, 'sunrise', info);
+            createDataElement('Sunset (Today)', sunset, 'sunset', info);
+            createDataElement('Dawn (Today)', dawn, 'dawn', info);
+            createDataElement('Dusk (Today)', dusk, 'dusk', info);
+            createDataElement('Solar Noon (Today)', solar_noon, 'solar-noon', info);
+            createDataElement('Day Length (Today)', day_length, 'day-length', info);
+            createDataElement('Timezone (Today)', timezone, 'timezone', info);
+    
+            // Check if there is data for the next day
+            if (cityData.length > 1) {
+                const nextDayData = cityData[1];
+                const { sunrise: nextSunrise, sunset: nextSunset, dawn: nextDawn, dusk: nextDusk, solar_noon: nextSolarNoon, day_length: nextDayLength } = nextDayData;
+    
+                // Create elements for next day data
+                createDataElement('Sunrise (Next Day)', nextSunrise, 'sunrise2', info);
+                createDataElement('Sunset (Next Day)', nextSunset, 'sunset2', info);
+                createDataElement('Dawn (Next Day)', nextDawn, 'dawn2', info);
+                createDataElement('Dusk (Next Day)', nextDusk, 'dusk2', info);
+                createDataElement('Solar Noon (Next Day)', nextSolarNoon, 'solar-noon2', info);
+                createDataElement('Day Length (Next Day)', nextDayLength, 'day-length2', info);
+            }
+    
+            locationResult.innerHTML = '';
+            locationResult.appendChild(info);
         }
-      }
-      
-      // Function to create a data element with a specific class
-      function createDataElement(label, value, className, parent) {
-        const element = document.createElement('p');
-        element.innerHTML = `<strong>${label}:</strong> ${value}`;
-        element.classList.add(className);
-        parent.appendChild(element);
-      }
+    }
+    
       
   
     // Function for button click and show error
