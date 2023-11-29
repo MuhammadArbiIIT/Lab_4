@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
             createDataElement('Dusk (Today)', dusk, 'dusk', info);
             createDataElement('Solar Noon (Today)', solar_noon, 'solar-noon', info);
             createDataElement('Day Length (Today)', day_length, 'day-length', info);
-            createDataElement('Timezone (Today)', timezone, 'timezone', info);
+            createDataElement('Timezone ', timezone, 'timezone', info);
 
             // Check if there is data for the next day
             if (cityData.length > 1) {

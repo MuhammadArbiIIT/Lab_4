@@ -17,7 +17,7 @@ body {
 .box {
     background-color: white;
     height: 650px;
-    width: 550px;
+    width: 650px;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the content horizontally */
@@ -64,17 +64,30 @@ body {
 /* Style for individual images */
 #img-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 2 columns */
-    gap: 240px; 
+    grid-template-columns: repeat(3, 1fr); /* 1 columns */
+    gap: 400px; 
+    row-gap: 350px;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 100%;
     position: absolute;
-    max-width: 600px;
+    max-width: 800px;
     scale: 20%;
-    top: 20px;
+    top: 210px;
  }
- 
+
+ #img-container2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 1 columns */
+    gap: 400px; 
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    max-width: 800px;
+    scale: 90%;
+    margin-top: 2500px;
+ }
 
 .image {
     height: auto;
@@ -96,7 +109,7 @@ body {
 .sunrise {
     display: flex;
     position: relative;
-    right: 110px;
+    right: 170px;
     top: 60px;
 }
 
@@ -109,7 +122,7 @@ body {
 .dawn {
     display: flex;
     position: relative;
-    right: 110px;
+    right: 170px;
     top: 10px;
 }
 .dusk {
@@ -120,65 +133,63 @@ body {
 }
 
 .solar-noon {
-    display: flex;
-    position: relative;
-    left: 200px;
-    bottom: 94px;
-}
-.day-length {
-    display: flex;
-    position: relative;
-    right: 110px;
-    top: 10px;
-}
-.timezone {
-    display: flex;
-    position: relative;
-    left: 160px;
-    bottom: 30px;
-}
-.sunrise2 {
     color:red;
     display: flex;
     position: relative;
-    right: 110px;
-    bottom: 100px;
-}
-
-.sunset {
-    display: flex;
-    position: relative;
-    left: 60px;
-    top: 21px;
-}
-.dawn {
-    display: flex;
-    position: relative;
-    right: 110px;
-    top: 10px;
-}
-.dusk {
-    display: flex;
-    position: relative;
-    left: 60px;
-    bottom: 30px;
-}
-
-.solar-noon {
-    display: flex;
-    position: relative;
     left: 200px;
     bottom: 94px;
 }
 .day-length {
     display: flex;
     position: relative;
-    right: 110px;
-    top: 10px;
+    right: 120px;
+    top: 80px;
 }
 .timezone {
     display: flex;
     position: relative;
-    left: 160px;
-    bottom: 30px;
+    left: 180px;
+    top: 41px;
+}
+.sunrise2 {
+   
+    display: flex;
+    position: relative;
+    right: 170px;
+    bottom: 150px;
+}
+
+.sunset2 {
+    
+    display: flex;
+    position: relative;
+    left: 60px;
+    bottom: 195px;
+}
+.dawn2 {
+    display: flex;
+    position: relative;
+    right: 170px;
+    bottom: 200px;
+}
+.dusk2 {
+    display: flex;
+    position: relative;
+    left: 60px;
+    bottom: 250px;
+}
+
+.solar-noon2 {
+    color:red;
+    display: flex;
+    position: relative;
+    left: 200px;
+    bottom: 94px;
+}
+.day-length2 {
+
+    display: flex;
+    position: relative;
+    right: 120px;
+    bottom: 160px;
 }
