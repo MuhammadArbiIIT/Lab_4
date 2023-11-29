@@ -3,7 +3,6 @@
     font-family: 'Inter', sans-serif;
     font-family: 'Lato', sans-serif;
     font-family: 'Poppins', sans-serif;
-    align-items: flex-start;
 }
 
 body {
@@ -26,47 +25,39 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
     align-items: center;
- }
- 
+}
 
- #title {
+#title {
     font-size: 30px;
-    position: fixed;
-    top: 100;
- }
- 
+    margin-top: 20px;
+    padding-bottom: 40px;
+}
 
 #cityDropdown {
     margin-right: 100px;
-    margin-top: 100px; 
+    margin-bottom: 150px;
     font-size: 20px;
     width: 350px;
     height: auto;
-    display: flex;
-    align-items: center;
-    position: fixed;
- }
-
- #locationResult {
-    font-size: 15px;
-    margin-bottom: 20px; /* Adjust as needed */
-    display:flex; 
-    margin-top: 500px;
 }
 
- #getLocationButtonContainer {
+#locationResult {
+    font-size: 15px;
+    margin-bottom: 500px;
+}
+
+#getLocationButtonContainer {
     display: flex;
     align-items: center;
-    margin-top: 95px;
-    position: fixed;
-    
- }
- 
+    margin-bottom: 0px;
+    margin-left: 310px;
+}
+
 #getLocationButton {
     font-size: 25px;
     background: transparent;
     border: none;
-    margin-left: 370px; /* Adjust as needed */
-    top: 100;
+    margin-left: 10px;
+    margin-bottom: 330px;
+    position: fixed; /* Move the fixed position to the button only */
 }
-
