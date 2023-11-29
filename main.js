@@ -61,6 +61,43 @@ document.addEventListener('DOMContentLoaded', function () {
         }];
         displaySelectedCity(selectedCity);
       }
+       // Call fetchNextDayData here to fetch data for the next day
+       await fetchNextDayData(selectedCity);
+    }
+    
+    // Function to fetch city data for the next day
+    async function fetchNextDayData(selectedCity) {
+        const apiUrl = 'https://api.sunrisesunset.io/json?';
+        const { latitude, longitude } = cityCoordinates[selectedCity];
+
+        // Get the date for the next day
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const nextDay = tomorrow.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+
+        // Build the API URL for the next day
+        const nextDayUrl = `${apiUrl}lat=${latitude}&lng=${longitude}&date=${nextDay}`;
+
+        try {
+            const response = await fetch(nextDayUrl);
+            const data = await response.json();
+            const nextDayDataItem = {
+                city: selectedCity,
+                sunrise: data.results.sunrise,
+                sunset: data.results.sunset,
+                dawn: data.results.dawn,
+                dusk: data.results.dusk,
+                solar_noon: data.results.solar_noon,
+                day_length: data.results.day_length,
+                timezone: data.results.timezone
+            };
+
+            // Append the next day data to the cityData array
+            cityData.push(nextDayDataItem);
+            displaySelectedCity(selectedCity);
+        } catch (error) {
+            console.error(`Error fetching data for ${selectedCity} (next day):`, error);
+        }
     }
   
     // Function to populate dropdown menu
