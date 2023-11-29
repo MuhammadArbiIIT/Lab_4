@@ -137,3 +137,48 @@ body {
     left: 160px;
     bottom: 30px;
 }
+.sunrise2 {
+    color:red;
+    display: flex;
+    position: relative;
+    right: 110px;
+    bottom: 100px;
+}
+
+.sunset {
+    display: flex;
+    position: relative;
+    left: 60px;
+    top: 21px;
+}
+.dawn {
+    display: flex;
+    position: relative;
+    right: 110px;
+    top: 10px;
+}
+.dusk {
+    display: flex;
+    position: relative;
+    left: 60px;
+    bottom: 30px;
+}
+
+.solar-noon {
+    display: flex;
+    position: relative;
+    left: 200px;
+    bottom: 94px;
+}
+.day-length {
+    display: flex;
+    position: relative;
+    right: 110px;
+    top: 10px;
+}
+.timezone {
+    display: flex;
+    position: relative;
+    left: 160px;
+    bottom: 30px;
+}
