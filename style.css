@@ -17,7 +17,7 @@ body {
 .box {
     background-color: white;
     height: 650px;
-    width: 500px;
+    width: 530px;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the content horizontally */
@@ -65,14 +65,14 @@ body {
 #img-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 2 columns */
-    gap: 5px; /* Adjust the gap between images */
+    gap: 250px; /* Adjust the gap between images */
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 70%;
     position: absolute;
-    max-width: 400px;
+    max-width: 600px;
     scale: 20%;
-    top: 100px;
+    top: 20px;
  }
  
 
@@ -85,4 +85,9 @@ body {
 /* Additional styling for specific images */
 #timezone_img {
     scale: 55%;
+}
+#white_img {
+    scale: 40%;
+    height:400px; 
+    width: 500px;
 }
