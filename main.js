@@ -162,12 +162,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function for button click and show error
     function getLocation() {
         console.log("Button clicked");
+    
+        // Toggle the class to hide images
+        document.getElementById('img-container').classList.toggle('hide-images');
+        document.getElementById('img-container2').classList.toggle('hide-images');
+    
+        // Add a class to the body or a parent element
+        document.body.classList.toggle('button-pressed');
+    
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition, showError);
         } else {
             document.getElementById('locationResult').innerHTML = "Geolocation is not supported by this browser.";
         }
     }
+    
 
     // Function to get coordinates and information from API
     function showPosition(position) {

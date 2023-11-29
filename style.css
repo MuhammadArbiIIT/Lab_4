@@ -14,6 +14,10 @@ body {
     background-color: #4A8BDF;
 }
 
+#container {
+    transition: margin-top 0.5s; /* Add a transition for smooth animation */
+}
+
 .box {
     background-color: white;
     height: 750px;
@@ -41,8 +45,8 @@ body {
 }
 
 #locationResult {
-    font-size: 15px;
-    margin-bottom: 0px;
+    font-size: 20px;
+    margin-bottom: 400px;
 }
 
 #getLocationButtonContainer {
@@ -62,10 +66,24 @@ body {
 }
 
 /* Style for individual images */
+#img-container,
+#img-container2 {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease; /* Optional: Add a smooth transition effect */
+}
+
+/* Add a class to adjust styles when the button is pressed */
+.button-pressed #img-container,
+.button-pressed #img-container2 {
+    visibility: hidden;
+    opacity: 0;
+}
+
 #img-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 1 columns */
-    gap: 800px; 
+    grid-template-columns: repeat(3, 1fr);
+    gap: 800px;
     row-gap: 350px;
     justify-content: center;
     align-items: center;
@@ -74,12 +92,12 @@ body {
     max-width: 800px;
     scale: 20%;
     top: 210px;
- }
+}
 
- #img-container2 {
+#img-container2 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 1 columns */
-    gap: 400px; 
+    grid-template-columns: repeat(3, 1fr);
+    gap: 400px;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -87,7 +105,7 @@ body {
     max-width: 800px;
     scale: 90%;
     margin-top: 2500px;
- }
+}
 
 .image {
     height: auto;
@@ -101,90 +119,98 @@ body {
 }
 #white_img {
     scale: 40%;
-    height:400px; 
+    height: 400px; 
     width: 500px;
 }
 
 /* JSON data styling */
-.sunrise {
+.sunrise,
+.sunset,
+.dawn,
+.dusk,
+.solar-noon,
+.day-length,
+.timezone,
+.sunrise2,
+.sunset2,
+.dawn2,
+.dusk2,
+.solar-noon2,
+.day-length2 {
     display: flex;
     position: relative;
+}
+
+/* Adjusted positions for JSON data */
+.sunrise {
     right: 240px;
     top: 75px;
 }
 
 .sunset {
-    display: flex;
-    position: relative;
     left: 40px;
     top: 35px;
 }
+
 .dawn {
-    display: flex;
-    position: relative;
     right: 240px;
     top: 22px;
 }
+
 .dusk {
-    display: flex;
-    position: relative;
     left: 40px;
     bottom: 20px;
 }
 
 .solar-noon {
-    display: flex;
-    position: relative;
     left: 290px;
     bottom: 80px;
 }
+
 .day-length {
-    display: flex;
-    position: relative;
     right: 120px;
     top: 120px;
 }
+
 .timezone {
-    display: flex;
-    position: relative;
     left: 180px;
     top: 82px;
 }
+
 .sunrise2 {
-    display: flex;
-    position: relative;
     right: 240px;
     bottom: 145px;
 }
 
 .sunset2 {
-    display: flex;
-    position: relative;
     left: 40px;
     bottom: 188px;
 }
+
 .dawn2 {
-    display: flex;
-    position: relative;
     right: 240px;
     bottom: 200px;
 }
+
 .dusk2 {
-    display: flex;
-    position: relative;
     left: 40px;
     bottom: 240px;
 }
 
 .solar-noon2 {
-    display: flex;
-    position: relative;
     left: 290px;
     bottom: 320px;
 }
+
 .day-length2 {
-    display: flex;
-    position: relative;
     right: 120px;
     bottom: 120px;
+}
+
+/* hiding images when btn pressed */
+.button-pressed #img-container,
+.button-pressed #img-container2 {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Optional: Add a smooth transition effect */
 }
