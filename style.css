@@ -15,7 +15,7 @@ body {
 }
 
 #container {
-    transition: margin-top 0.5s; /* Add a transition for smooth animation */
+    transition: margin-top 0.5s; /* transition  */
 }
 
 .box {
@@ -24,7 +24,7 @@ body {
     width: 830px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the content horizontally */
+    align-items: center; 
     justify-content: space-between;
     border-radius: 10px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
@@ -72,7 +72,7 @@ body {
 #img-container2 {
     visibility: visible;
     opacity: 1;
-    transition: opacity 0.5s ease; /* Optional: Add a smooth transition effect */
+    transition: opacity 0.5s ease; /* transition */
 }
 
 /* Add a class to adjust styles when the button is pressed */
@@ -214,7 +214,7 @@ body {
 #img-container2 {
     display: grid;
     opacity: 1;
-    transition: opacity 0.5s ease; /* Optional: Add a smooth transition effect */
+    transition: opacity 0.5s ease; /* transition  */
 }
 
 /* Style for individual images */
@@ -222,7 +222,7 @@ body {
 #img-container2 {
     display: grid;
     opacity: 1;
-    transition: opacity 0.5s ease; /* Optional: Add a smooth transition effect */
+    transition: opacity 0.5s ease; /* transition  */
 }
 
 /* Hide images when the container has the 'hide-images' class */

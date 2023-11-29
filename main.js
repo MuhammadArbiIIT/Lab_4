@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const getLocationButton = document.getElementById('getLocationButton');
     const resultDataButton = document.getElementById('resultDataButton');
     let cityData = [];
-
+//array of city names
     const cityCoordinates = {
         'New York': { latitude: 40.71427, longitude: -74.00597 },
         'Chicago': { latitude: 41.85003, longitude: -87.65005 },
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'Boston': { latitude: 42.3601, longitude: -71.0589 },
         'Toronto': { latitude: 43.6532, longitude: -79.3832 }
     };
-
+//function to get the current location
     function createDataElement(label, value, className, parent) {
         const element = document.createElement('p');
         element.innerHTML = `<strong>${label}:</strong> ${value}`;
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         await fetchNextDayData(selectedCity);
     }
-
+//function to get json data from api.sunrisesunset.io
     async function fetchNextDayData(selectedCity) {
         const apiUrl = 'https://api.sunrisesunset.io/json?';
         const { latitude, longitude } = cityCoordinates[selectedCity];
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
             cityDropdown.appendChild(option);
         });
     }
-
+//function to create elements to display json data
     function displaySelectedCity(selectedCity) {
         const selectedCityData = cityData.find(city => city.city === selectedCity);
 
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let isButtonClicked = false; // Flag to check if the button is clicked
     let isLocationFetched = false; // Flag to check if the location has been fetched
-    
+//function for getlocationbutton to gather user location and display images
     function getLocation() {
         console.log("Button clicked");
         document.body.classList.toggle('button-pressed');
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
         locationResult.innerHTML = `Latitude: ${latitude}<br>Longitude: ${longitude}<br>Accuracy: ${accuracy} meters`;
     }
-    
+    //error handler for geolocation 
     function showError(error) {
         switch (error.code) {
             case error.PERMISSION_DENIED:
