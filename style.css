@@ -16,8 +16,8 @@ body {
 
 .box {
     background-color: white;
-    height: 650px;
-    width: 650px;
+    height: 750px;
+    width: 830px;
     display: flex;
     flex-direction: column;
     align-items: center; /* Center the content horizontally */
@@ -65,7 +65,7 @@ body {
 #img-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 1 columns */
-    gap: 400px; 
+    gap: 800px; 
     row-gap: 350px;
     justify-content: center;
     align-items: center;
@@ -109,87 +109,82 @@ body {
 .sunrise {
     display: flex;
     position: relative;
-    right: 170px;
-    top: 60px;
+    right: 240px;
+    top: 75px;
 }
 
 .sunset {
     display: flex;
     position: relative;
-    left: 60px;
-    top: 21px;
+    left: 40px;
+    top: 35px;
 }
 .dawn {
     display: flex;
     position: relative;
-    right: 170px;
-    top: 10px;
+    right: 240px;
+    top: 22px;
 }
 .dusk {
     display: flex;
     position: relative;
-    left: 60px;
-    bottom: 30px;
+    left: 40px;
+    bottom: 20px;
 }
 
 .solar-noon {
-    color:red;
     display: flex;
     position: relative;
-    left: 200px;
-    bottom: 94px;
+    left: 290px;
+    bottom: 80px;
 }
 .day-length {
     display: flex;
     position: relative;
     right: 120px;
-    top: 80px;
+    top: 120px;
 }
 .timezone {
     display: flex;
     position: relative;
     left: 180px;
-    top: 41px;
+    top: 82px;
 }
 .sunrise2 {
-   
     display: flex;
     position: relative;
-    right: 170px;
-    bottom: 150px;
+    right: 240px;
+    bottom: 145px;
 }
 
 .sunset2 {
-    
     display: flex;
     position: relative;
-    left: 60px;
-    bottom: 195px;
+    left: 40px;
+    bottom: 188px;
 }
 .dawn2 {
     display: flex;
     position: relative;
-    right: 170px;
+    right: 240px;
     bottom: 200px;
 }
 .dusk2 {
     display: flex;
     position: relative;
-    left: 60px;
-    bottom: 250px;
+    left: 40px;
+    bottom: 240px;
 }
 
 .solar-noon2 {
-    color:red;
     display: flex;
     position: relative;
-    left: 200px;
-    bottom: 94px;
+    left: 290px;
+    bottom: 320px;
 }
 .day-length2 {
-
     display: flex;
     position: relative;
     right: 120px;
-    bottom: 160px;
+    bottom: 120px;
 }
