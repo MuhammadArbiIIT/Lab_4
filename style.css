@@ -3,6 +3,7 @@
     font-family: 'Inter', sans-serif;
     font-family: 'Lato', sans-serif;
     font-family: 'Poppins', sans-serif;
+    align-items: flex-start;
 }
 
 body {
@@ -19,39 +20,53 @@ body {
     height: 650px;
     width: 500px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
     border-radius: 10px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-    flex-direction: column;
-    justify-content: flex-end;
-}
+    align-items: center;
+ }
+ 
 
+ #title {
+    font-size: 30px;
+    position: fixed;
+    top: 100;
+ }
+ 
 
 #cityDropdown {
-    margin-bottom: 120px; 
+    margin-right: 100px;
+    margin-top: 100px; 
     font-size: 20px;
     width: 350px;
     height: auto;
-    margin-right: 100px;
-}
-
-#locationResult {
-    font-size: 15px;
-    margin-bottom: 300px; 
-    display: flex;
-}
-
-#getLocationButtonContainer {
     display: flex;
     align-items: center;
-    margin-top: 50px;
+    position: fixed;
+ }
+
+ #locationResult {
+    font-size: 15px;
+    margin-bottom: 20px; /* Adjust as needed */
+    display:flex; 
+    margin-top: 500px;
 }
 
+ #getLocationButtonContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 95px;
+    position: fixed;
+    
+ }
+ 
 #getLocationButton {
     font-size: 25px;
-    margin-top: 50px;
-    margin-left: 370px;
     background: transparent;
     border: none;
+    margin-left: 370px; /* Adjust as needed */
+    top: 100;
 }
+
