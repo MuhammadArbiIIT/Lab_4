@@ -16,7 +16,7 @@ body {
 
 .box {
     background-color: white;
-    height: 600px;
+    height: 650px;
     width: 500px;
     display: flex;
     align-items: center;
@@ -27,21 +27,31 @@ body {
     justify-content: flex-end;
 }
 
-#getLocationButton {
-    margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
-}
 
 #cityDropdown {
-    margin-bottom: 300px; 
+    margin-bottom: 120px; 
     font-size: 20px;
     width: 350px;
     height: auto;
+    margin-right: 100px;
 }
 
 #locationResult {
-    font-size: 20px;
-    margin-top: 20px; 
+    font-size: 15px;
+    margin-bottom: 300px; 
     display: flex;
+}
+
+#getLocationButtonContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#getLocationButton {
+    font-size: 25px;
+    margin-top: 50px;
+    margin-left: 370px;
+    background: transparent;
+    border: none;
 }
