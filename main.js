@@ -73,17 +73,34 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   
-    // Function to display information for the selected city
     function displaySelectedCity(selectedCity) {
-      const selectedCityData = cityData.find(city => city.city === selectedCity);
-      if (selectedCityData) {
-        const { sunrise, sunset, dawn, dusk, solar_noon, day_length, timezone } = selectedCityData;
-        const info = document.createElement('p');
-        info.innerHTML = `<strong>${selectedCity}:</strong> Sunrise at ${sunrise}, Sunset at ${sunset}, Dawn at ${dawn}, Dusk at ${dusk}, Solar Noon at ${solar_noon}, Day Length: ${day_length}, Timezone: ${timezone}`;
-        locationResult.innerHTML = '';
-        locationResult.appendChild(info);
+        const selectedCityData = cityData.find(city => city.city === selectedCity);
+        if (selectedCityData) {
+          const { sunrise, sunset, dawn, dusk, solar_noon, day_length, timezone } = selectedCityData;
+          const info = document.createElement('div');
+      
+          // Create elements for different data points and add classes
+          createDataElement('Sunrise', sunrise, 'sunrise', info);
+          createDataElement('Sunset', sunset, 'sunset', info);
+          createDataElement('Dawn', dawn, 'dawn', info);
+          createDataElement('Dusk', dusk, 'dusk', info);
+          createDataElement('Solar Noon', solar_noon, 'solar-noon', info);
+          createDataElement('Day Length', day_length, 'day-length', info);
+          createDataElement('Timezone', timezone, 'timezone', info);
+      
+          locationResult.innerHTML = '';
+          locationResult.appendChild(info);
+        }
       }
-    }
+      
+      // Function to create a data element with a specific class
+      function createDataElement(label, value, className, parent) {
+        const element = document.createElement('p');
+        element.innerHTML = `<strong>${label}:</strong> ${value}`;
+        element.classList.add(className);
+        parent.appendChild(element);
+      }
+      
   
     // Function for button click and show error
     function getLocation() {
